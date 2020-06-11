@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import {Container, ListGroup, ListGroupItem, Button} from 'reactstrap';
-import {CSSTransition, TransitionGroup} from 'react-transition-group';
-import uuid from 'react-uuid';
+//import {CSSTransition, TransitionGroup} from 'react-transition-group';
 import {connect} from 'react-redux';
 import {removeItem, getItem} from '../redux/items/actionItem'
 
@@ -11,52 +10,27 @@ class ShoppingList extends Component {
         this.props.showItem();
     }
 
-    
     render() {
-
+        console.log(this.props.items);
         const {items} = this.props.items;
         return (
             <div>
                 <Container>
-                    <Button
-                        color="dark"
-                        style={{marginBottom: "2rem", marginTop: "2rem"}}
-                        onClick={()=> {
-                            const name = prompt("enter Item");
-
-                            // if(name) {
-                            //    this.setState( state => ({
-                            //        items: [...state.items, {id: uuid(), name:name}]
-                            //    }))
-                            // }
-                        }}
-                    >
-                        add list
-                    </Button>
                     <ListGroup>
-                        <TransitionGroup>
-                            {items.map(({id, name}) => (
-                                <CSSTransition key={id} timout={500} classNames="fade">
-                                    <ListGroupItem>
-                                        <Button
-                                            color="danger"
-                                            size="2rem"
-                                            style={{marginRight:"1rem"}}
-                                            onClick={()=>{
-                                                // this.setState(state => ({
-                                                //     items: state.items.filter(item => item.id !== id)
-                                                // }))
-                                                //alert("yes")
-                                                this.props.deleteItem(id)
-                                            }}
-                                        >X</Button>
-                                        { name }
-                                    </ListGroupItem>
-                                </CSSTransition>    
-                            ))}
-                        </TransitionGroup>
+                        {items.map(({id, name}) => (
+                            <ListGroupItem key={id}>
+                                <Button
+                                    color="danger"
+                                    size="2rem"
+                                    style={{marginRight:"1rem"}}
+                                    onClick={()=>{
+                                        this.props.deleteItem(id)
+                                    }}
+                                >X</Button>
+                                { name }
+                            </ListGroupItem>
+                        ))}
                     </ListGroup>
-
                 </Container>
             </div>
         )

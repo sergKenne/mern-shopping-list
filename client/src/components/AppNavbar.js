@@ -7,11 +7,6 @@ import {
     Nav,
     NavItem,
     NavLink,
-    // UncontrolledDropdown,
-    // DropdownToggle,
-    // DropdownMenu,
-    // DropdownItem,
-    // NavbarText,
     Container
   } from 'reactstrap';
 
@@ -30,7 +25,7 @@ class AppNavbar extends Component {
     render() {
         return (
             <div>
-                <Navbar color="dark" dark expand="md">
+                <Navbar color="dark" dark expand="sm" className="">
                     <Container>
                         <NavbarBrand href="/">ShoppingList</NavbarBrand>
                         <NavbarToggler onClick={this.toggle} />
@@ -49,3 +44,4 @@ class AppNavbar extends Component {
 }
 
 export default AppNavbar;
+
