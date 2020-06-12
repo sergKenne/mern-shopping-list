@@ -17,7 +17,6 @@ const items = require("./routes/api/items")
 const app = express();
 
 app.use(bodyParser.json());
-//app.use(cors());
 
 app.use("/api/items", items)
 

@@ -17,17 +17,17 @@ class ShoppingList extends Component {
             <div>
                 <Container>
                     <ListGroup>
-                        {items.map(({id, name}) => (
-                            <ListGroupItem key={id}>
+                        {items.map(({_id, name}) => (
+                            <ListGroupItem key={_id}>
                                 <Button
                                     color="danger"
                                     size="2rem"
                                     style={{marginRight:"1rem"}}
                                     onClick={()=>{
-                                        this.props.deleteItem(id)
+                                        this.props.deleteItem(_id);
                                     }}
                                 >X</Button>
-                                { name }
+                                { name } 
                             </ListGroupItem>
                         ))}
                     </ListGroup>
@@ -46,7 +46,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         deleteItem: (id) => dispatch(removeItem(id)),
-        showItem: () => dispatch(getItem())
+        showItem: () => dispatch(getItem()),
     }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(ShoppingList);
